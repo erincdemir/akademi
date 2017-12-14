@@ -1,0 +1,17 @@
+{
+  "name": "guys",
+  "version": "1.0.0",
+  "description": "bitirmemiz lazım guys",
+  "main": "backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "guys"
+  ],
+  "author": "Erinç Güray DEMİR",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.0.0-rc0"
+  }
+}
