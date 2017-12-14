@@ -1,0 +1,2 @@
+# akademi
+Eğitim Platformu
