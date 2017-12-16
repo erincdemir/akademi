@@ -19,6 +19,7 @@ app.use(session({
 
 app.get('/', function(req, res){
   res.send('hello world');
+  console.log(req.session.userId);
 });
 
 app.post('/kayit', function(req, res){
@@ -60,4 +61,4 @@ app.post('/giris',function(req,res){
 
 
 
-app.listen(8080);
+app.listen(3000);
