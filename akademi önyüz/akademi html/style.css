@@ -1,0 +1,54 @@
+i.icon{
+	font-size: 1.5em;
+}
+div.menu{
+	background-color: blue;
+}
+.container.main{
+	margin-top: 16px;
+}
+#content-div{
+
+
+margin: 8em auto 8em auto;
+}
+#navbar{
+	background-color: lightseagreen;
+}
+
+/*AnaSayfa*/
+
+
+#homepagecontent{
+
+
+margin-top: 8em;
+
+
+}
+
+
+
+/*AnaSayfa bitiş*/
+
+
+/*ogrenci sayfası*/
+ body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+
+/*ogrenci sayfası bitiş*/
+
+
+
+
+
