@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <div id="cont" style="position: fixed;height:100%;width: 100%">
+        <input oninput="speeddisplay()" min="100" max="5000" type="range" id="ps">
+        <label id="label" for="ps">Party Speed:</label>
+        <hr>
+        <button onclick="party()">Party</button>
+        <img id="icon" src="illu.png" width="100px" height="100px">
+    </div>
+
+    <script>
+        var img;
+        var x;
+        var y;
+        var random;
+        var party2;
+
+        function speeddisplay() {
+            document.getElementById("label").innerHTML = "Party Speed:" + " " + document.getElementById("ps").value;
+        }
+
+        function party() {
+            clearInterval(party2);
+            img = document.querySelector("#icon");
+            x = document.getElementById("cont").clientWidth;
+            y = document.getElementById("cont").clientHeight;
+
+
+            party2 = setInterval(function() {
+                img.setAttribute('style', 'position:fixed;left:' + Math.floor(Math.random() * x) + 'px;' + 'top:' + Math.floor(Math.random() * y) + 'px;');
+            }, 5000 - document.querySelector("#ps").value);
+
+        }
+
+    </script>
+</body>
+
+</html>
