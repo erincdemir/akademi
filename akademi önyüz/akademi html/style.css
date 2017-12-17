@@ -49,6 +49,29 @@ margin-top: 8em;
 /*ogrenci sayfası bitiş*/
 
 
+/*profil sayfası*/
+#profil-sayfası{
+  margin-top: 8em;
+}
 
 
 
+/*profil sayfası bitiş*/
+
+.istatistik{
+  background-color: yellow;
+
+border: 1px solid grey;
+margin: 30px auto 30px auto;
+
+}
+
+h1{margin:auto;}
+
+
+
+
+.chartlar{
+  margin-top: 20px;
+  margin-left: 20px;
+}
