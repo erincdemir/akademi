@@ -1,9 +1,7 @@
 i.icon{
 	font-size: 1.5em;
 }
-div.menu{
-	background-color: blue;
-}
+
 .container.main{
 	margin-top: 16px;
 }
@@ -59,9 +57,9 @@ margin-top: 8em;
 /*profil sayfası bitiş*/
 
 .istatistik{
-  background-color: yellow;
+  background-color: white;
 
-border: 1px solid grey;
+
 margin: 30px auto 30px auto;
 
 }
@@ -74,4 +72,12 @@ h1{margin:auto;}
 .chartlar{
   margin-top: 20px;
   margin-left: 20px;
+}
+
+
+/* Gradient transparent - color - transparent */
+hr{
+      height: 6px;
+  background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
+    border: 0;
 }
