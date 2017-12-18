@@ -1,0 +1,83 @@
+i.icon{
+	font-size: 1.5em;
+}
+
+.container.main{
+	margin-top: 16px;
+}
+#content-div{
+
+
+margin: 8em auto 8em auto;
+}
+#navbar{
+	background-color: lightseagreen;
+}
+
+/*AnaSayfa*/
+
+
+#homepagecontent{
+
+
+margin-top: 8em;
+
+
+}
+
+
+
+/*AnaSayfa bitiş*/
+
+
+/*ogrenci sayfası*/
+ body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+
+/*ogrenci sayfası bitiş*/
+
+
+/*profil sayfası*/
+#profil-sayfası{
+  margin-top: 8em;
+}
+
+
+
+/*profil sayfası bitiş*/
+
+.istatistik{
+  background-color: white;
+
+
+margin: 30px auto 30px auto;
+
+}
+
+h1{margin:auto;}
+
+
+
+
+.chartlar{
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+
+/* Gradient transparent - color - transparent */
+hr{
+      height: 6px;
+  background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
+    border: 0;
+}
