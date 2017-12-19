@@ -7,7 +7,7 @@ var session = require('express-session');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/test'),{useMongoClient:true};
+mongoose.connect('mongodb://api:1453@localhost/test'),{useMongoClient:true};
 
 app.use(bodyparser.urlencoded({extended:true}));
 
@@ -57,6 +57,21 @@ app.post('/giris',function(req,res){
 	   });	
 	}
 
+});
+
+app.post('/profil',function(req,res){
+	if(req.session.userId){
+		User.findById(req.session.userId, function (err, user) {
+			if(err){
+				res.send(err.message);
+			}
+			else{
+				res.send(user.username + " Profili");
+			}
+		 } );
+	}else{
+		res.send("giriş yapın");
+	}
 });
 
 
