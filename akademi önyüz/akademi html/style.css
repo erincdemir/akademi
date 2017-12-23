@@ -53,6 +53,28 @@ margin-top: 8em;
 }
 
 
+.portlet .portlet-header {
+    position: relative;
+    padding: 1px 15px;
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #D5D5D5;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    -webkit-background-clip: padding-box;
+}
+
+
+
+.portlet-content {
+    padding: 22px 15px;
+    background: #FFF;
+    -webkit-border-radius: 4px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 4px;
+    -moz-background-clip: padding;
+    border-radius: 4px;
+    background-clip: padding-box;
+}
 
 /*profil sayfası bitiş*/
 
@@ -81,3 +103,5 @@ hr{
   background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
     border: 0;
 }
+
+
