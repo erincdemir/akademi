@@ -20,6 +20,21 @@ var UserSchema = new mongoose.Schema({
   passwordConf: {
     type: String,
     required: true,
+  },
+  levelHistory:{
+    type:Object
+  },
+  readingSpeed:{
+    type:Object
+  },
+  homeworkCount:{
+    type:Number
+  },
+  answered:{
+    type:Number
+  },
+  trueAnswers:{
+    type:Number
   }
 });
 

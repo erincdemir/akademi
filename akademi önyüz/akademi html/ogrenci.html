@@ -47,21 +47,21 @@
         Hesabınıza giriş yapın
       </div>
     </h2>
-    <form class="ui large form" action="http://172.26.108.235:8080/giris" method="post">
+    <form class="ui large form">
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"> </i>&nbsp;&nbsp;
-            <input type="text" name="email" placeholder="E-mail adresi">
+            <input type="text" name="email" placeholder="E-mail adresi" id="email">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>&nbsp;&nbsp;
-            <input type="password" name="password" placeholder="Şifre">
+            <input type="password" name="password" placeholder="Şifre" id="password">
           </div>
         </div>
-        <button class="ui fluid large teal submit button" type="submit">Giriş yap</button>
+        <button class="ui fluid large teal submit button" id="loginBtn">Giriş yap</button>
       </div>
 
       <div class="ui error message"> </div>
@@ -74,6 +74,51 @@
   </div>
 </div>
 
+<script>
+document.body.onload = function(){
+var data = "";
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    var response = JSON.parse(this.responseText);
+    console.log(this.responseText);
+    if(response.hasSession == "true"){
+        window.location = "profil.html";
+    
+  }
+}
+});
+
+xhr.open("POST", "http://127.0.0.1:3000/profil");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+xhr.send(data);  
+}
+
+document.getElementById("loginBtn").onclick = function(event){
+event.preventDefault();
+var data = "email="+encodeURI(document.getElementById("email").value)+"&password="+encodeURI(document.getElementById("password").value);
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    var response = JSON.parse(this.responseText);
+    
+    if(response.loginStatus == "success"){
+        window.location = "profil.html";
+    }
+  }
+});
+
+xhr.open("POST", "http://127.0.0.1:3000/giris");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+xhr.send(data);
+}
+</script> 
 
 
 
