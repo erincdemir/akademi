@@ -73,6 +73,17 @@ app.post('/giris',function(req,res){
 
 });
 
+app.post('/cikis',function(req,res){
+	if(req.session.userId){
+		req.session.destroy(function(err){
+			if(err){
+			}else{
+				res.send("Oturum sonlandırıldı");
+			}
+		});
+	}
+});
+
 app.post('/profil',function(req,res){
 	if(req.session.userId){
 		User.findById(req.session.userId, function (err, user) {
@@ -80,7 +91,7 @@ app.post('/profil',function(req,res){
 				res.send(JSON.stringify({hasSession:"error"}));
 			}
 			else{
-				res.send(JSON.stringify({hasSession:"true",username:user.username,levelProcess:user.levelHistory,readingSpeed:user.readingSpeed,homeworks:user.homeworkCount,understandRate:Math.floor((user.trueAnswers/user.answered)*100)}));
+				res.send(JSON.stringify({hasSession:"true",username:user.username,levelProcess:user.levelHistory,readingSpeed:user.readingSpeed,homeworks:user.homeworkCount,understandRate:Math.floor((user.trueAnswers/user.answered)*100)||0}));
 			}
 		 } );
 	}else{
