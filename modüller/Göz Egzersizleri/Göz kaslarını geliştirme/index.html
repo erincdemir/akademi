@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Göz kaslarını Geliştirme</title>
+</head>
+
+<body>
+
+    <div id="domNode" style=" position: absolute; width: 600px; height: 400px">
+        <div id="animtarget" style=" position: absolute ;height: 60px; width: 60px; color: crimson ;border-width: 2px; background-color:chocolate" class="large square el"></div>
+    </div>
+    <input id="range" style="position: relative; z-index: 5"  type="range" min="100" max="1000">
+    <button style="position: relative; z-index: 5"  onclick="start()">Başla</button>
+    <select style="position: relative; z-index: 5"  id="egtype">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    </select>
+
+</body>
+<script>
+    var speed;
+    var to1;
+    var to2;
+    var to3;
+    var to4;
+    var anim;
+    var egtype;
+    
+ 
+
+    function f() {
+        
+        clearInterval(anim);
+        clearTimeout(to1);
+        speed = document.getElementById("range").value;
+        anim = setInterval(function() {
+
+            to1 = setTimeout(function() {
+                document.getElementById('animtarget').style.left = "600px"
+                setTimeout(function() {
+                    document.getElementById('animtarget').style.top = "400px"
+                    setTimeout(function() {
+                        document.getElementById('animtarget').style.left = "0px"
+                        setTimeout(function() {
+                            document.getElementById('animtarget').style.top = "0px"
+                        }, speed);
+                    }, speed);
+                }, speed);
+            }, speed);
+
+
+        }, speed * 4);
+
+
+
+    }
+
+    function g() {
+        
+        clearInterval(anim);
+        clearTimeout(to1);
+        speed = document.getElementById("range").value;
+        anim = setInterval(function() {
+
+            to1 = setTimeout(function() {
+                document.getElementById('animtarget').style.left = "300px"
+                setTimeout(function() {
+                    document.getElementById('animtarget').style.left = "600px"
+                    setTimeout(function() {
+                        document.getElementById('animtarget').style.top = "200px"
+                        setTimeout(function() {
+                            document.getElementById('animtarget').style.top = "400px"
+                            setTimeout(function() {
+                                document.getElementById('animtarget').style.left = "300px"
+                                setTimeout(function() {
+                                    document.getElementById('animtarget').style.left = "0px"
+                                    setTimeout(function() {
+                                        document.getElementById('animtarget').style.top = "200px"
+                                        setTimeout(function() {
+                                            document.getElementById('animtarget').style.top = "0px"
+                                        }, speed);
+                                    }, speed);
+                                }, speed);
+                            }, speed);
+                        }, speed);
+                    }, speed);
+                }, speed);
+            }, speed);
+
+
+        }, speed * 8);
+
+    }
+       function start(){
+        egtype=document.getElementById("egtype").value;
+        if(egtype==1){f()}else{g()};
+    }
+
+</script>
+
+</html>

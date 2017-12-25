@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <button onclick="grow()">Grow</button>
+    <input id="growspeed" type="range" min="100" max="1000">
+    <center>
+
+        <div id="box" style="position: absolute!important; background-color: crimson; width:150px; height: 150px;border: 2px solid yellow; left:50%; top:50%; transform: translateY(-50%) translateX(-50%);"></div>
+    </center>
+
+
+</body>
+<script>
+    var i = 0;
+    var hint;
+    var wint;
+    var speed;
+    var timer;
+
+
+    function grow() {
+        clearInterval(timer);
+        i = 0;
+        document.getElementById("box").style.height = "150px";
+        document.getElementById("box").style.width = "150px";
+
+        speed = document.getElementById("growspeed").value;
+        timer = setInterval(function() {
+            if (i < 70) {
+                hint = parseInt(document.getElementById("box").style.height);
+                wint = parseInt(document.getElementById("box").style.width);
+                document.getElementById("box").style.height = (hint + i) + "px"
+                document.getElementById("box").style.width = (wint + i) + "px"
+                i += 5
+            } else if (i == 70) {
+                document.getElementById("box").style.height = "150px";
+                document.getElementById("box").style.width = "150px";
+                i = 0;
+                a = 1;
+                console.log(a);
+
+                clearInterval(timer)
+                grow();
+            }
+
+        }, speed);
+
+
+    }
+
+</script>
+
+</html>

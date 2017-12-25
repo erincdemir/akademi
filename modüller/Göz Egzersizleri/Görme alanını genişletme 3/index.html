@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <input type="range" id="speed" min="100" max="1000">
+    <button onclick="f()">Başla</button>
+    <div style="height: 629px;">
+        <div id="parentDiv" style="position: absolute; top: 0px; left: 300px; font-size: 25px;">
+
+        </div>
+
+    </div>
+
+
+</body>
+<script>
+    var i;
+    var draw;
+    var f;
+    var x;
+    var innertime;
+    var speed;
+
+    Element.prototype.remove = function() {
+        this.parentElement.removeChild(this);
+    }
+    NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+        for (var i = this.length - 1; i >= 0; i--) {
+            if (this[i] && this[i].parentElement) {
+                this[i].parentElement.removeChild(this[i]);
+            }
+        }
+    }
+
+     f =function f() {
+          clearInterval(draw);
+         clearInterval(innertime);
+         document.getElementsByClassName("box").remove();
+         speed= document.getElementById("speed").value;
+         i = 0
+
+        function test(i) {
+            draw = setInterval(function() {
+                var parent = document.getElementById("parentDiv");
+                var elementbox = document.createElement("div");
+                var els = elementbox.style;
+                els.position = "absolute";
+                els.border = "2px solid crimson";
+                elementbox.id = "part" + i;
+                elementbox.className="box";
+                els.width = 149 + (40 * i) + "px";
+                els.height = 149 + (40 * i) + "px";
+                els.top = 230 - (20 * i) + "px";
+                els.left = 76.5 - (20 * i) + "px";
+                parent.appendChild(elementbox);
+
+                if (i < 15) {
+                    i++
+                } else if (i == 15) {
+                     innertime=setInterval(function() {
+                        if(i>0){
+                             document.getElementById("part" + i).remove();
+                        i--;
+                        } else if(i==0){
+                
+                        document.getElementById("part0").remove();
+                      clearInterval(innertime);
+                            return test(0);
+                        }
+                       
+                    }, speed);
+                    clearInterval(draw);
+                }
+            }, speed);
+
+        }
+        test(i);
+    }
+    
+ 
+</script>
+
+</html>
