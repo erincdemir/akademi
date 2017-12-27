@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>Hızlı Okuma</title>
+    <script src='js/jquery.js'></script>
+    <script src='js/speedreading.js'></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body style="padding: 20px; font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;">
+    <h1>Hızlı Okuma -Demo</h1>
+    <textarea class="text" style="width: 600px; height: 200px; font-size: 16px;">
+Edgar Allan Poe was an American author, poet, editor, and literary critic, considered part of the American Romantic Movement. Best known for his tales of mystery and the macabre, Poe was one of the earliest American practitioners of the short story, and is generally considered the inventor of the detective fiction genre. He is further credited with contributing to the emerging genre of science fiction. He was the first well-known American writer to try to earn a living through writing alone, resulting in a financially difficult life and career.
+</textarea><br>
+    <input id="speed" type="range" min="10" max="500" value="180">
+    <h1 id="counter"></h1>
+
+    <button onclick="sr()" class="read" style="padding: 20px; margin-top: 20px; background-color: #6699CC; display: inline-block">Başla!</button>
+    <script>
+        var date;
+        var speed;
+        var timer;
+        var a;
+        var words;
+        var data;
+
+        function f() {
+            data = document.querySelector(".text").value;
+            words = data.split(" ");
+            speed = document.getElementById("speed").value;
+
+
+            a = 0;
+
+            /*function time() {
+                timer = setInterval(function() {
+                    if (a < words.length) {
+                        a++;
+                    } else {
+                        clearInterval(timer);
+                    }
+
+                }, document.querySelector("#speed").value);
+
+            }*/
+            setTimeout(function() {
+                    timer = setInterval(function() {
+                        if (a < words.length) {
+                            a++;
+                            document.getElementById("counter").innerHTML = a + " " + "kelime okundu.";
+                        } else {
+                            clearInterval(timer);
+                            //document.getElementById("counter").innerHTML = "";
+                        }
+
+                    }, speed);
+
+                }
+
+                , 1900 - (speed - 180));
+
+        }
+
+        function sr() {
+            f();
+            date = new Date();
+            localStorage.setItem("currenttime", date.getTime());
+            var text = document.querySelector(".text").value;
+            var noPunc = text.replace(/\./g, '').replace(/\,/g, '').replace(/\-/g, '');
+            speedreading.defaulttime = document.querySelector("#speed").value;
+            speedreading.read(noPunc);
+        }
+
+    </script>
+<script>
+    function sendData(){
+ var data = "speed="+a;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "http://188.226.129.227:3000/hizli");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+xhr.setRequestHeader("cache-control", "no-cache");
+xhr.setRequestHeader("postman-token", "8d6e999c-de3c-5c25-0453-3d51933b1a5a");
+
+xhr.send(data);
+        
+    }
+
+    
+    </script>
+</body>
+
+</html>

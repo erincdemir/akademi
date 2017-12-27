@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <div id="cont" style="position: fixed;height:100%;width: 100%">
+        <p style="display:none" id="para">Küçük yaşlarda ev halkının kızmasına rağmen dilenci taklidi yapmasıyla başlayan dilencilik özentisi, ona hayatının sonuna kadar götürür. Çocukluğunda oyunlar oynamayı sevmeyen, oturduğu yerden kalkmak istemeyen bir yapıya sahipti. Korkak pısırık bir kişi olan daha sonra yaş on yedi on sekiz olunca delikanlılığında verdiği cesaretle, biraz havalanıyor. Kolalı gömlekler, ütülü pantolonlar giyip dışarı çıkıyor, ama yine de rüyasında kendisini Don Kişot gibi görmekten alamıyor. Evine giren hırsızı yakalayıp polise teslim ediyor, piyangodan çıkan parayla babaannesinin borçlarını kapatıyor, gibi rüyalar biraz daha cesaretlendiriyor. Mahallesinde çıkan yangında içeridekileri kurtarmaya gitmek istiyor fakat bacısı izin vermiyor. Bunlar umursamaz bir tavırla evde oyun oynamaya başlıyorlar, arada bir yukarı çıkarak yangının sönüp sönmediğine bakıyorlardı. Ama sabaha karşı evlerinin de yanmasına mani olamadılar. Buradan başka bir mahalleye taşınırlar. Yeni evleri eski evleri kadar güzel olmamasına rağmen tek tesellisi bir görüşte âşık olduğu komşu kızı Mesrure'dir. Mesrure'yi evin bir köşesinden izliyor, ama bir türlü cesaretini toplayamıyordu. Biraz da korkuyordu. Çünkü kafası çok büyük olduğu için Mesrure'nin cevabının ‘hayır' olabileceği endişesi vardı. Mesrure'nin babası aile dostu olmaya başladı. Akşamları evlerine gelir, oturur, muhabbet ederlerdi. Mesrure'nin babası şiiri çok severdi. Ve arada bir dörtlükler okuyordu. Babasını etkilemek için kendini şiire adamıştı. Mesrure' nin babası şiir okumaya balayınca o da sonunu getiriyordu. Babası gerçekten etkilenmişti. En sonunda dadıların da aracılığıyla Mesrure'ye teklif götürdüler. Sonunda kabul etti. Ama meşrutiyet inkılabının olduğu yılda, dayısı yüzünden evleri dağılır. Büyükannesi ve bacısıyla birlikte başka bir eve taşınırlar. Babaannesini kaybeder. Artık evden ayrılma zamanı gelmiştir. Sakallı Talat diye biriyle tanışır, arkadaşlık kurar. Talat memurdur. Talat'ın tavsiyesiyle Zeynep Hanım Konağı'nda eğitim almaya başladı. Edinmiş olduğu çevre yüzünden Sinop' a gönderilir. Salıverilmesiyle, kendisine kalacak bir yer bulup burayı arzuhal ve köylü mektupları yazmaya başlar. Düşüncesiz bir şekilde İstanbul' a döner. Talat' la tekrar karşılaşır. Talat yine elinden tutar ve bir iş bulur. Mektepte yazı hocalığı ve kâtiplik yapacak, mektepte kalacaktı. Askerlik yaşı gelmişti. Ama bütün yoklamalarda kafası büyük olduğu için sorun çıkıyordu. Bugün git yarın gel diyorlardı. Sonradan askere de alındı ve Mısır' a yolculuk başladı. Yolculukta kargaşa çıktı ve yürüyerek memlekete geri dönmeye başladı. Yürüye yürüye Konya' ya geliyor, kendini biraz toplayarak İzmir' e hastaneye gidiyor hiç parası kalmadığı için taburcu bile edilemiyor. Hastane müdürü, ölmüş bir kişinin elbiselerini vererek taburcu eder. İzmir işgal altında olduğu için tütün deposunda kalıyordu. Günleri artık çok daha kötüye gidiyordu. Cami önünde beklerken kadının birinden ilk sadakasını alıyor. Bu parayla akşama yiyecek alıyor ve kaldığı yere götürerek oradakileri sevindiriyor. Dilenciliğe başlamasıyla kazancı bayağı artıyor. Artık doktorlara büyük belediye memurlarının maaşına yaklaşmaya başlamıştı. Kendine bir ev bile tutmuştu. Arap komşuları vardı çevresinde. Kaldığı yerdeki Arap komşuları, sabah erkenden çıkıp akşam geç dönmesini merak etmişler, iş arıyorum cevabını almışlardır. İş istediği yerlerden aldığı cevaplar üzüyor fakat yılmıyordu. Sonunda dilediği oldu ve iş buldu. Sevinçliydi. Çünkü başkaları gibi çalışarak ekmeğini kazandığı gündü.</p>
+        <button onclick="see();party();">Başla</button>
+        <select id="zorluk">
+        <option value="200">1</option>
+        <option value="400">2</option>
+        <option value="600">3</option>
+        <option value="800">4</option>
+         <option value="1000">5</option>
+        </select>
+        <div id="cont" style="position: fixed;height:100%;width: 100%">
+            <center id="center"></center>
+        </div>
+
+    </div>
+
+    <script>
+        var data;
+        var words;
+
+
+        function see(e) {
+            data = document.querySelector("#para").innerHTML;
+            words = data.split(" ");
+
+            function single() {
+
+                setInterval(function() {
+                    var rand = Math.round(Math.random() * words.length);
+                    document.getElementById("center").innerHTML = "";
+                    setTimeout(function() {
+                        document.getElementById("center").innerHTML = words[rand];
+                    }, 500);
+
+
+                }, 1500 - document.querySelector("#zorluk").value)
+
+            }
+
+            function double() {
+
+                setInterval(function() {
+                    var rand = Math.round(Math.random() * words.length);
+                    var rand2 = Math.round(Math.random() * words.length);
+                    document.getElementById("center").innerHTML = "";
+                    setTimeout(function() {
+                        document.getElementById("center").innerHTML = words[rand] + " " + words[rand2];
+                    }, 500);
+
+
+
+                }, 1500)
+
+            }
+            if (e == 2) {
+                double();
+            } else if (e == undefined) {
+                single();
+            }
+
+        }
+
+    </script>
+    <script>
+        var img;
+        var x;
+        var y;
+        var random;
+        var party2;
+
+        function speeddisplay() {
+            document.getElementById("label").innerHTML = "Party Speed:" + " " + document.getElementById("ps").value;
+        }
+
+        function party() {
+            clearInterval(party2);
+            img = document.querySelector("#center");
+            x = document.getElementById("cont").clientWidth;
+            y = document.getElementById("cont").clientHeight;
+
+
+            party2 = setInterval(function() {
+                img.setAttribute('style', 'position:fixed;left:' + Math.floor(Math.random() * x) + 'px;' + 'top:' + Math.floor(Math.random() * y) + 'px;');
+            }, 1500 - document.querySelector("#zorluk").value);
+
+        }
+
+    </script>
+</body>
+
+</html>
