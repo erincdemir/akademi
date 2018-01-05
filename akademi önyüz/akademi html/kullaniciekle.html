@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>index.html</title>
+	<title>Kullanıcı Ekle</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
@@ -34,33 +34,41 @@
 
 <div id="profil-sayfası" class="ui container" style="background-color: white;"> 
 
-<div style="padding: 20px;" class="golge">
-  <center><h1>Kullanıcı Ekle  </h1></center>
-
-  <br>
+<div style="padding: 20px;" >
 
 
-
-    <form class="ui large form" action="http://172.26.108.235:8080/giris" method="post">
+    <div class="ui middle aligned center aligned grid" action="http://172.26.108.235:8080/giris" method="post">
+  <div class="column">
+    <h2 class="ui teal image header">
+      
+      <div class="content yesil">
+       <i class="add user icon"></i>Öğrenci Ekle
+      </div>
+    </h2>
+    <form class="ui large form" >
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"> </i>&nbsp;&nbsp;
-            <input type="text" name="email" placeholder="Kullanıcı Adı">
+            <input type="text" name="email" id="email" placeholder="Kullanıcı Adı">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>&nbsp;&nbsp;
-            <input type="password" name="password" placeholder="Kullanıcı Şifresi">
+            <input type="password" name="password" id="password" placeholder="Şifresi">
           </div>
         </div>
-        <button class="ui fluid large teal submit button" type="submit">Kullanıcı ekle</button>
+        <button class="ui fluid large teal submit button" id="loginbutton">Kullanıcı Ekle</button>
       </div>
 
       <div class="ui error message"> </div>
 
     </form>
+
+  </div>
+</div>
+
 
 
   

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Göz Egzersizi</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/modal.js"> </script>
+    <script src="dimmer.min.js"></script>
+    <link rel="stylesheet" href="dimmer.min.css">
+    <link rel="stylesheet" href="transition.min.css">
+    <script src="transition.min.js" ></script>
+</head>
+<body>
+
+<!--NAVBAR-->
+
+<div class="ui grey inverted menu stackable " id="navbar">
+ <div class="ui container main inverted secondary menu">
+ 	<div class="header item float left ui">
+     <i class="github icon">Logo</i>
+    </div>
+    
+    <a href="profil.html" class="item">
+      Profil
+    </a>
+    <a href="kelime.html" class="item">
+      Kelime Egzersizi
+    </a>
+   
+      <a href="goz.html" class="active item">
+      Göz Egzersizi
+      
+    </a>
+        <a onclick="logoff()" class="item">
+      Çıkış Yap
+      
+    </a>
+    
+  </div>
+</div>
+
+
+<!--NAVBAR FINISH-->
+
+
+
+
+<div id="kelime-sayfası" class="ui container" style="background-color: white;"> 
+<center>
+<div style="padding: 80px; height: 600px;" class="golge oyunkose">
+   <img style="width: 150px; height: 150px;" src="http://pngimg.com/uploads/eye/eye_PNG6183.png">
+  <h1>Göz egzersizleri -Demo</h1>
+  <br>
+  <p>Göz egzersizleri göz kaslarını geliştirmek için yetkili profesörler tarafından tasarlanmıştır  </p>
+<button class="ui green button" onclick="runmod()" >  Şimdi Test Et &raquo;</button> 
+</div>
+</center> 
+
+</div>
+
+
+
+
+        <div class="ui fulscreen modal">
+  <i class="close icon" onclick='clearInterval(timer);
+        i = 0;
+        document.getElementById("box").style.height = "150px";
+        document.getElementById("box").style.width = "150px";'></i>
+ <div style="padding: 20px; height: 600px;" class="golge">
+  <center>
+
+<button class="tiny ui secondary button" onclick="grow()">Büyüt</button>
+    <input id="growspeed" type="range"  min="100" max="1000">
+  
+    <center>
+
+        <div id="box" style="position: absolute!important; background-color: crimson; width:150px; height: 150px;border: 2px solid yellow; left:50%; top:50%; transform: translateY(-50%) translateX(-50%);"></div>
+    </center>
+
+
+
+
+
+
+</center>
+</div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<script>
+    var i = 0;
+    var hint;
+    var wint;
+    var speed;
+    var timer;
+
+
+    function grow() {
+        clearInterval(timer);
+        i = 0;
+        document.getElementById("box").style.height = "150px";
+        document.getElementById("box").style.width = "150px";
+
+        speed = document.getElementById("growspeed").value;
+        timer = setInterval(function() {
+            if (i < 55) {
+                hint = parseInt(document.getElementById("box").style.height);
+                wint = parseInt(document.getElementById("box").style.width);
+                document.getElementById("box").style.height = (hint + i) + "px"
+                document.getElementById("box").style.width = (wint + i) + "px"
+                i += 5
+            } else if (i == 55) {
+                document.getElementById("box").style.height = "150px";
+                document.getElementById("box").style.width = "150px";
+                i = 0;
+                a = 1;
+                console.log(a);
+
+                clearInterval(timer)
+                grow();
+            }
+
+        }, speed);
+
+
+    }
+
+</script>
+    <script>
+    function runmod(){
+        $('.fulscreen.modal')
+  .modal("toggle")
+;
+        
+    }
+    
+    </script>
+
+<div style="position:fixed; bottom: 0px; width: 100%; background-color: #2b2a30; color: white; "><center>Footer</center></div>
+
+
+</body>
+</html>

@@ -5,17 +5,26 @@ i.icon{
 .container.main{
 	margin-top: 16px;
 }
+
+
+
+
+
+
 #content-div{
 
 
 margin: 8em auto 8em auto;
 }
 #navbar{
-	background-color: lightseagreen;
+	background-color: #767676;
 }
 
 /*AnaSayfa*/
 
+.hide{
+  display: none;
+}
 
 #homepagecontent{
 
@@ -32,7 +41,7 @@ margin-top: 8em;
 
 /*ogrenci sayfası*/
  body {
-      background-color: #DADADA;
+      background-color: white;
     }
     body > .grid {
       height: 100%;
@@ -43,6 +52,16 @@ margin-top: 8em;
     .column {
       max-width: 450px;
     }
+
+
+.yesil{
+  color: black;
+}
+
+
+.buttonrengi{
+  background-color: #d16405 !important;
+}
 
 /*ogrenci sayfası bitiş*/
 
@@ -85,8 +104,15 @@ hr{
     border: 0;
 }
 
-
+  
 
 .golge {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
+
+.oyunkose{
+  height: 900px;
+  width: 800px;
 }

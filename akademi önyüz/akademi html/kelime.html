@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hızlı Okuma</title>
+      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src='js/speedreading.js'></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+   
+</head>
+<body>
+
+<!--NAVBAR-->
+
+<div class="ui grey inverted menu stackable " id="navbar">
+ <div class="ui container main inverted secondary menu">
+ 	<div class="header item float left ui">
+     <i class="github icon">Logo</i>
+    </div>
+    
+    <a href="profil.html" class="item">
+      Profil
+    </a>
+    <a href="kelime.html" class="active item">
+      Kelime Egzersizi
+    </a>
+
+      <a href="goz.html" class="item">
+      Göz Egzersizi
+      
+    </a>
+        <a onclick="logoff()" class="item">
+      Çıkış Yap
+      
+    </a>
+    
+  </div>
+</div>
+
+		<!--NAVBAR FINISH-->
+        <center>
+
+<div class="ui container" style="background-color: white;"> 
+
+<div style="padding: 20px;" class="oyunkose golge">
+    <img style="width: 150px; height: 150px;" src="https://images-na.ssl-images-amazon.com/images/I/71REnckExYL.png">
+     <center><h1>Hızlı Okuma -Demo</h1> 
+    <textarea class="text" style="width: 600px; height: 200px; font-size: 16px; margin-top:15px; padding: 10px;">
+Keloğlan ve Çilli Tavuk Masalı Bir varmış, bir yokmuş, evvel zaman içinde kalbur saman içinde, uzak ülkelerden birinde bizim keloğlan yaşarmış. Keloğlan kelmiş, keleşmiş ama özellikleri pek bir güzelmiş. İnsanlarla ilgilenir,arkadaşlarına iyi davranır, hayvanları sever fakat çalışmaktan pek hoşlanmazmış. Anası ona ne zaman bir iş buyursa bir bahane uydurur, anası kızınca da oraya buraya saklanırmış.
+</textarea><br>
+    <input id="speed" type="range" min="10" max="500" value="180">
+    <h1 id="counter"></h1>
+    <button onclick="sr()" class="read ui green button" style="padding: 20px; margin-top: 20px;">Başla!</button>
+</div>
+
+   </center>
+
+</div>
+
+
+
+
+
+
+<div style="position:fixed; bottom: 0px; width: 100%; background-color: #2b2a30; color: white; "><center>Footer</center></div>
+
+</div>
+
+ <script>
+        var date;
+        var speed;
+        var timer;
+        var a;
+        var words;
+        var data;
+
+        function f() {
+            data = document.querySelector(".text").value;
+            words = data.split(" ");
+            speed = document.getElementById("speed").value;
+
+
+            a = 0;
+
+            /*function time() {
+                timer = setInterval(function() {
+                    if (a < words.length) {
+                        a++;
+                    } else {
+                        clearInterval(timer);
+                    }
+
+                }, document.querySelector("#speed").value);
+
+            }*/
+            setTimeout(function() {
+                    timer = setInterval(function() {
+                        if (a < words.length) {
+                            a++;
+                            document.getElementById("counter").innerHTML = a + " " + "kelime okundu.";
+                        } else {
+                            clearInterval(timer);
+                            //document.getElementById("counter").innerHTML = "";
+                        }
+
+                    }, speed);
+
+                }
+
+                , 1900 - (speed - 180));
+
+        }
+
+        function sr() {
+            f();
+            date = new Date();
+            localStorage.setItem("currenttime", date.getTime());
+            var text = document.querySelector(".text").value;
+            var noPunc = text.replace(/\./g, '').replace(/\,/g, '').replace(/\-/g, '');
+            speedreading.defaulttime = document.querySelector("#speed").value;
+            speedreading.read(noPunc);
+        }
+
+    </script>
+
+<script>
+    function sendData(){
+ var data = "speed="+a;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "http://188.226.129.227:3000/hizli");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+xhr.setRequestHeader("cache-control", "no-cache");
+xhr.setRequestHeader("postman-token", "8d6e999c-de3c-5c25-0453-3d51933b1a5a");
+
+xhr.send(data);
+        
+    }
+
+    
+    </script>
+</body>
+</html>

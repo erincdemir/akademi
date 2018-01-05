@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>index.html</title>
+	<title>Profil</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 <body>
 
@@ -20,15 +21,16 @@
     <a href="#" class="active item">
       Profil
     </a>
-    <a href="#" class="item">
+    <a href="kelime.html" class="item">
       Kelime Egzersizi
     </a>
-    <a href="#" class="item">
-      Beyin Egzersizi
+ 
+      <a href="goz.html" class="item">
+      Göz Egzersizi
       
     </a>
-      <a href="#" class="item">
-      Göz Egzersizi
+        <a onclick="logoff()" class="item">
+      Çıkış Yap
       
     </a>
     
@@ -38,7 +40,7 @@
 		<!--NAVBAR FINISH-->
 
 <div id="profil-sayfası" class="container acikkahve">
-         <h1 style="text-align: center; font-size: 35px;"><strong>Profil Sayfası </strong></h1>
+         <h1 id="username" style="text-align: center; font-size: 35px;"><strong> Statları </strong></h1>
 
 
 
@@ -56,10 +58,11 @@
 
 
 <div class="ui grid container">
-  <div class="six wide column istatistik golge" style="height: %60;"><h4><i class="bar chart icon"></i> &nbsp LEVEL</h4> <img src="./images/chart.png"> </div>
-  <div class="six wide column istatistik golge"><h4><i class="line chart icon"></i> KELİME </h4> <img src="./images/chart.png"> </div>
-  <div class="six wide column istatistik golge"><h4><i class="pie chart icon"></i>BEYİN </h4> <img src="./images/chart.png"> </div>
-  <div class="six wide column istatistik golge"><h4><i class="bullseye icon"></i>GÖZ </h4> <img src="./images/chart.png"> </div>
+
+  <div class="six wide column istatistik golge" style="height: %60;"><h4><i class="bar chart icon"></i> &nbsp Seviye Gelişimi</h4><canvas id="bar-chart" width="800" height="450"> </div>
+  <div class="six wide column istatistik golge"><h4><i class="line chart icon"></i> Hızlı Okuma Gelişimi </h4><canvas id="bar-chart2" width="800" height="450"> </div>
+  <div class="six wide column istatistik golge"><h4><i class="pie chart icon"></i>Ödev Tamamlama Durumu </h4><canvas id="pie-chart" width="800" height="450"> </div>
+  <div class="six wide column istatistik golge"><h4><i class="settings icon"></i>Anlama Durumu</h4><canvas id="pie-chart2" width="800" height="450"></div>
  
 
 
@@ -85,6 +88,107 @@
 
 </div>
 </center>
+<script>
+var data = null;
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    var student = JSON.parse(this.responseText);
+    document.getElementById("username").innerHTML = student.username;
+    new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: Object.keys(student.levelProcess),
+      datasets: [
+        {
+          label: "Seviye",
+          backgroundColor: "#3e95cd",
+          data:  Object.keys(student.levelProcess).map(function(k) { return student.levelProcess[k] })
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Seviye Gelişiminiz'
+      }
+    }
+});
+    new Chart(document.getElementById("bar-chart2"), {
+    type: 'bar',
+    data: {
+      labels: Object.keys(student.readingSpeed),
+      datasets: [
+        {
+          label: "Kelime Sayısı",
+          backgroundColor: "#3e95cd",
+          data:  Object.keys(student.readingSpeed).map(function(k) { return student.readingSpeed[k] })
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Hızlı Okuma Gelişiminiz'
+      }
+    }
+});
+    new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Tamamlanan","Tamamlanmayan"],
+      datasets: [{
+        label: "Ödevler",
+        backgroundColor: ["#3e95cd", "#8e5ea2"],
+        data: [student.homeworks,100 - student.homeworks]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Ödev Tamamlama Durumunuz '
+      }
+    }
+});
+    new Chart(document.getElementById("pie-chart2"), {
+    type: 'pie',
+    data: {
+      labels: ["Doğru","Yanlış"],
+      datasets: [{
+        label: "Doğru Cevaplar",
+        backgroundColor: ["#3e95cd", "#8e5ea2"],
+        data: [student.understandRate,100 - student.understandRate]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Anlama Durumunuz '
+      }
+    }
+});
+  }
+});
+xhr.open("POST", "http://188.226.129.227:3000/profil");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+xhr.send(data);
+function logoff(){
+  var data = null;
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    window.location = "ogrenci.html";
+  }
+});
+xhr.open("POST", "http://188.226.129.227:3000/cikis");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+xhr.send(data);
+}
+</script>  
 <div style="width: 100%; background-color: #2b2a30; color: white; "><center>Footer</center></div>
 
 </body>
