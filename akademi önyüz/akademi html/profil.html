@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>index.html</title>
+	<title>Profil</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
@@ -18,14 +18,19 @@
      <i class="github icon">Logo</i>
     </div>
     
-    <a href="index.html" class="active item">
-      Anasayfa
+    <a href="#" class="active item">
+      Profil
     </a>
-    <a href="ogretmen.html" class="item">
-      Öğretmen Girişi
+    <a href="kelime.html" class="item">
+      Kelime Egzersizi
     </a>
-    <a href="ogrenci.html" class="item">
-      Öğrenci Girişi
+ 
+      <a href="goz.html" class="item">
+      Göz Egzersizi
+      
+    </a>
+        <a onclick="logoff()" class="item">
+      Çıkış Yap
       
     </a>
     
@@ -34,13 +39,13 @@
 
 		<!--NAVBAR FINISH-->
 
-<div id="profil-sayfası" class="container">
-         <h1 id="profiletitle" style="text-align: center;">Profil sayfası </h1>
+<div id="profil-sayfası" class="container acikkahve">
+         <h1 id="username" style="text-align: center; font-size: 35px;"><strong> İstatistikleri </strong></h1>
 
 
 
 
-<hr>
+
 
 
 
@@ -54,12 +59,16 @@
 
 
 <div class="ui grid container">
-  <div class="six wide column istatistik"><canvas id="bar-chart" width="800" height="450"></canvas>
- </div>
-  <div class="six wide column istatistik"><canvas id="bar-chart2" width="800" height="450"></canvas></div>
-  <div class="six wide column istatistik"><canvas id="pie-chart" width="800" height="450"></canvas></div>
-  <div class="six wide column istatistik"><canvas id="pie-chart2" width="800" height="450"></canvas></div>
-  <div class="six wide column istatistik" onclick="logoff()">Çıkış Yap</div>  
+
+  <div class="six wide column istatistik golge" style="height: %60;"><h4><i class="bar chart icon"></i> &nbsp Seviye Gelişimi</h4><canvas id="bar-chart" width="800" height="450"> </div>
+  <div class="six wide column istatistik golge"><h4><i class="line chart icon"></i> Hızlı Okuma Gelişimi </h4><canvas id="bar-chart2" width="800" height="450"> </div>
+  <div class="six wide column istatistik golge"><h4><i class="pie chart icon"></i>Ödev Tamamlama Durumu </h4><canvas id="pie-chart" width="800" height="450"> </div>
+  <div class="six wide column istatistik golge"><h4><i class="settings icon"></i>Anlama Durumu</h4><canvas id="pie-chart2" width="800" height="450"></div>
+ 
+
+
+  
+
 </div>
 
 
@@ -82,14 +91,13 @@
 </center>
 <script>
 var data = null;
-
+  
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
-
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
     var student = JSON.parse(this.responseText);
-    document.getElementById("profiletitle").innerHTML = student.username;
+    document.getElementById("username").innerHTML = student.username;
 
     new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
@@ -170,15 +178,11 @@ xhr.addEventListener("readystatechange", function () {
 });
   }
 });
-
-xhr.open("POST", "http://127.0.0.1:3000/profil");
+xhr.open("POST", "http://188.226.129.227:3000/profil");
 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
 xhr.send(data);
-
 function logoff(){
   var data = null;
-
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
@@ -187,12 +191,13 @@ xhr.addEventListener("readystatechange", function () {
     window.location = "ogrenci.html";
   }
 });
-
-xhr.open("POST", "http://127.0.0.1:3000/cikis");
+xhr.open("POST", "http://188.226.129.227:3000/cikis");
 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
 xhr.send(data);
 }
 </script>  
+<div style="width: 100%; background-color: #2b2a30; color: white; "><center>Footer</center></div>
+
+
 </body>
 </html>

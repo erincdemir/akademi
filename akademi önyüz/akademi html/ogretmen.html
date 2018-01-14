@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Öğretmen Giriş</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style type="text/css">
+   
+  </style>
+</head>
+<body>
+
+<!--NAVBAR-->
+
+<div class="ui grey fixed inverted menu stackable" id="navbar">
+ <div class="ui container main inverted secondary menu">
+ 	<div class="header item float left ui">
+     <i class="github icon">Logo</i>
+    </div>
+    
+    <a href="index.html" class="item">
+      Anasayfa
+    </a>
+    <a href="ogretmen.html" class="active item">
+      Öğretmen Girişi
+    </a>
+    <a href="ogrenci.html" class="item">
+      Öğrenci Girişi
+      
+    </a>
+    
+  </div>
+</div>
+
+
+		<!--NAVBAR FINISH-->
+
+
+
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <img src="images/ogretmen.png" class="image">
+      <div class="content yesil">
+        Hesabınıza giriş yapın
+      </div>
+    </h2>
+    <form class="ui large form" action="http://172.26.108.235:8080/giris" method="post">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"> </i>&nbsp;&nbsp;
+            <input type="text" name="email" placeholder="E-mail adresi">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>&nbsp;&nbsp;
+            <input type="password" name="password" placeholder="Şifre">
+          </div>
+        </div>
+        <button class="ui fluid large teal submit button buttonrengi" type="submit">Giriş yap</button>
+      </div>
+
+      <div class="ui error message"> </div>
+
+    </form>
+
+    <div class="ui message yesil">
+      Öğretmen hesabı açmak için <a href="#" class="yesil">Kaydol</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>
