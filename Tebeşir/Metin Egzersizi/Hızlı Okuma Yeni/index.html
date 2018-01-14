@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <title>Untitled Document</title>
+</head>
+
+<body id="body" onload="f()">
+    <p style="display:none" id="para">Küçük yaşlarda ev halkının kızmasına rağmen dilenci taklidi yapmasıyla başlayan dilencilik özentisi, ona hayatının sonuna kadar götürür. Çocukluğunda oyunlar oynamayı sevmeyen, oturduğu yerden kalkmak istemeyen bir yapıya sahipti. Korkak pısırık bir kişi olan daha sonra yaş on yedi on sekiz olunca delikanlılığında verdiği cesaretle, biraz havalanıyor. Kolalı gömlekler, ütülü pantolonlar giyip dışarı çıkıyor, ama yine de rüyasında kendisini Don Kişot gibi görmekten alamıyor. Evine giren hırsızı yakalayıp polise teslim ediyor, piyangodan çıkan parayla babaannesinin borçlarını kapatıyor, gibi rüyalar biraz daha cesaretlendiriyor. Mahallesinde çıkan yangında içeridekileri kurtarmaya gitmek istiyor fakat bacısı izin vermiyor. Bunlar umursamaz bir tavırla evde oyun oynamaya başlıyorlar, arada bir yukarı çıkarak yangının sönüp sönmediğine bakıyorlardı. Ama sabaha karşı evlerinin de yanmasına mani olamadılar. Buradan başka bir mahalleye taşınırlar. Yeni evleri eski evleri kadar güzel olmamasına rağmen tek tesellisi bir görüşte âşık olduğu komşu kızı Mesrure'dir. Mesrure'yi evin bir köşesinden izliyor, ama bir türlü cesaretini toplayamıyordu. Biraz da korkuyordu. Çünkü kafası çok büyük olduğu için Mesrure'nin cevabının ‘hayır' olabileceği endişesi vardı. Mesrure'nin babası aile dostu olmaya başladı. Akşamları evlerine gelir, oturur, muhabbet ederlerdi. Mesrure'nin babası şiiri çok severdi. Ve arada bir dörtlükler okuyordu. Babasını etkilemek için kendini şiire adamıştı. Mesrure' nin babası şiir okumaya balayınca o da sonunu getiriyordu. Babası gerçekten etkilenmişti. En sonunda dadıların da aracılığıyla Mesrure'ye teklif götürdüler. Sonunda kabul etti. Ama meşrutiyet inkılabının olduğu yılda, dayısı yüzünden evleri dağılır. Büyükannesi ve bacısıyla birlikte başka bir eve taşınırlar. Babaannesini kaybeder. Artık evden ayrılma zamanı gelmiştir. Sakallı Talat diye biriyle tanışır, arkadaşlık kurar. Talat memurdur. Talat'ın tavsiyesiyle Zeynep Hanım Konağı'nda eğitim almaya başladı. Edinmiş olduğu çevre yüzünden Sinop' a gönderilir. Salıverilmesiyle, kendisine kalacak bir yer bulup burayı arzuhal ve köylü mektupları yazmaya başlar. Düşüncesiz bir şekilde İstanbul' a döner. Talat' la tekrar karşılaşır. Talat yine elinden tutar ve bir iş bulur. Mektepte yazı hocalığı ve kâtiplik yapacak, mektepte kalacaktı. Askerlik yaşı gelmişti. Ama bütün yoklamalarda kafası büyük olduğu için sorun çıkıyordu. Bugün git yarın gel diyorlardı. Sonradan askere de alındı ve Mısır' a yolculuk başladı. Yolculukta kargaşa çıktı ve yürüyerek memlekete geri dönmeye başladı. Yürüye yürüye Konya' ya geliyor, kendini biraz toplayarak İzmir' e hastaneye gidiyor hiç parası kalmadığı için taburcu bile edilemiyor. Hastane müdürü, ölmüş bir kişinin elbiselerini vererek taburcu eder. İzmir işgal altında olduğu için tütün deposunda kalıyordu. Günleri artık çok daha kötüye gidiyordu. Cami önünde beklerken kadının birinden ilk sadakasını alıyor. Bu parayla akşama yiyecek alıyor ve kaldığı yere götürerek oradakileri sevindiriyor. Dilenciliğe başlamasıyla kazancı bayağı artıyor. Artık doktorlara büyük belediye memurlarının maaşına yaklaşmaya başlamıştı. Kendine bir ev bile tutmuştu. Arap komşuları vardı çevresinde. Kaldığı yerdeki Arap komşuları, sabah erkenden çıkıp akşam geç dönmesini merak etmişler, iş arıyorum cevabını almışlardır. İş istediği yerlerden aldığı cevaplar üzüyor fakat yılmıyordu. Sonunda dilediği oldu ve iş buldu. Sevinçliydi. Çünkü başkaları gibi çalışarak ekmeğini kazandığı gündü.</p>
+    <input id="speed" type="range" min="10" max="500" value="180">
+
+    <div id="display" style="font-family: 'Gloria Hallelujah', cursive;"></div>
+    <div style="width:100px!important">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+
+</body>
+<script>
+    var timer;
+    var a;
+    var b;
+    var pressed;
+    var words;
+
+
+    function f() {
+        var data = document.querySelector("#para").innerHTML;
+        words = data.split(" ");
+
+        for (var i = 0; i < words.length; i++) {
+            document.querySelector("#display").innerHTML += '<span id=' + i + '>' + " " + words[i] + "</span>";
+        }
+        a = 0;
+        b = 0;
+
+        function time() {
+            timer = setInterval(function() {
+                if (a < words.length) {
+                    document.getElementById(b).setAttribute("style", "color:black");
+                    document.getElementById(a).setAttribute("style", "background-color:red");
+                    a++;
+                    b = a - 1;
+                } else {
+                    alert(words.length + " " + "Okundu")
+                    clearInterval(timer);
+                }
+
+            }, document.querySelector("#speed").value);
+
+        }
+
+        time();
+
+        body.onkeypress = function(e) {
+            if (e.keyCode == 32 && pressed != 1) {
+                clearInterval(timer);
+                alert(a + " " + "Okundu")
+                chart();
+                pressed = 1
+
+            } else if (pressed == 1) {
+                time();
+                pressed = 0
+            }
+        }
+
+        document.querySelector("#speed").oninput = function() {
+            clearInterval(timer);
+            time();
+        }
+
+    }
+</script>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    function chart() {
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Okunan", "Kalan"],
+                datasets: [{
+                    label: "Okuma Durumu",
+                    backgroundColor: ['rgb(255, 0, 0)', 'rgb(0,0,0)'
+
+                    ],
+                    borderColor: 'rgb(0, 0, 0)',
+                    data: [a, words.length - a],
+                }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                }
+
+            }
+        });
+    }
+    chart();
+</script>
+
+</html>
