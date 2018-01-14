@@ -44,13 +44,13 @@
       <div class="content yesil">
         Hesabınıza giriş yapın
       </div>
-    </h2>
     <form class="ui large form" >
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"> </i>&nbsp;&nbsp;
             <input type="text" name="email" id="email" placeholder="E-mail adresi">
+
           </div>
         </div>
         <div class="field">
@@ -72,6 +72,51 @@
   </div>
 </div>
 
+<script>
+document.body.onload = function(){
+var data = "";
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    var response = JSON.parse(this.responseText);
+    console.log(this.responseText);
+    if(response.hasSession == "true"){
+        window.location = "profil.html";
+    
+  }
+}
+});
+
+xhr.open("POST", "http://127.0.0.1:3000/profil");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+xhr.send(data);  
+}
+
+document.getElementById("loginBtn").onclick = function(event){
+event.preventDefault();
+var data = "email="+encodeURI(document.getElementById("email").value)+"&password="+encodeURI(document.getElementById("password").value);
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    var response = JSON.parse(this.responseText);
+    
+    if(response.loginStatus == "success"){
+        window.location = "profil.html";
+    }
+  }
+});
+
+xhr.open("POST", "http://127.0.0.1:3000/giris");
+xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+xhr.send(data);
+}
+</script> 
 
 
 
